@@ -11,10 +11,10 @@
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Raphael-borg/popdezrtp/main/photo_2025-08-18_21-08-42.jpg">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
         
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Playfair Display', serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,33 +22,60 @@
             align-items: center;
             min-height: 100vh;
             color: #ffffff;
-            background: linear-gradient(135deg, #4b5563, #7f1d1d);
+            background: linear-gradient(160deg, #1f1f1f, #7f1d1d, #3b3b3b);
+            background-size: 300% 300%;
+            animation: gradientBG 12s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
             text-align: center;
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            max-width: 650px;
             width: 90%;
-            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(8px);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
-            max-width: 350px;
+            max-width: 300px;
             height: auto;
             margin-bottom: 25px;
+            animation: fadeDown 1.2s ease;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2.3em;
             margin-bottom: 0.5em;
             font-weight: 700;
+            animation: fadeUp 1.5s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.15em;
             line-height: 1.6;
             margin-bottom: 2em;
         }
@@ -56,34 +83,48 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .cta-button, .sub-cta-button {
             display: inline-block;
-            background-color: #7f1d1d;
+            background: linear-gradient(135deg, #991b1b, #7f1d1d);
             color: #ffffff;
             padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1em;
-            transition: background-color 0.3s ease;
             cursor: pointer;
             text-align: center;
-            min-width: 120px;
+            min-width: 130px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         .cta-button:hover, .sub-cta-button:hover {
-            background-color: #991b1b;
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-button:active, .sub-cta-button:active {
+            transform: scale(0.96) rotate(-1deg);
         }
 
         .sub-buttons {
             display: none;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .sub-buttons.show {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 480px) {
@@ -91,34 +132,57 @@
                 flex: 1 1 100%;
                 min-width: unset;
             }
+            h1 { font-size: 1.8em; }
+            p { font-size: 1em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/Raphael-borg/popdezrtp/main/photo_2025-08-18_21-09-00.jpg" alt="Logo Dez" class="logo">
+        <img src="https://raw.githubusercontent.com/Raphael-borg/popdezrtp/main/photo_2025-08-16_01-03-59.jpg" alt="Logo Live" class="logo">
         
-        <h1>Convide um Amigo e Ganhe R$ 50<br>Super Bônus + Prêmio Grátis</h1>
+        <h1>Live Premiada<br>Todo os Domingo</h1>
         
-        <p>Você também pode ter outros Benefícios, temos muitos benefícios para os jogadores que são leais todos os dias</p>
+        <p>Mais informações, inscrições, etc você pode entrar em contato com um deles abaixo</p>
         
-        <div class="button-container" id="main-cta">
-            <div class="cta-button">Clique Aqui 1</div>
-            <div class="cta-button">Clique Aqui 2</div>
+        <div class="button-container">
+            <div class="cta-button" id="cta1">Ayla REDEPOP</div>
+            <div class="cta-button" id="cta2">Alex REDEPOP</div>
         </div>
         
-        <div class="sub-buttons" id="sub-buttons">
-            <a href="https://x8c2tpa.com?ch=8191&fbPixelId=1380589956504297" class="sub-cta-button" target="_blank">Reivindicar Agora</a>
-            <a href="https://x8c2tpa.com?ch=8191&fbPixelId=1380589956504297" class="sub-cta-button" target="_blank">Registre-se Agora</a>
+        <div class="sub-buttons" id="sub-buttons-1">
+            <a href="https://t.me/Aylacastroadm" class="sub-cta-button" target="_blank">Ayla Telegram</a>
+            <a href="https://wa.me/5513955479184" class="sub-cta-button" target="_blank">Ayla Zap</a>
+        </div>
+
+        <div class="sub-buttons" id="sub-buttons-2">
+            <a href="https://t.me/RedepopAlex" class="sub-cta-button" target="_blank">Alex Telegram</a>
+            <a href="https://wa.me/553175320364" class="sub-cta-button" target="_blank">Alex Zap</a>
         </div>
     </div>
 
     <script>
-        const mainCta = document.getElementById('main-cta');
-        const subButtons = document.getElementById('sub-buttons');
+        const cta1 = document.getElementById('cta1');
+        const cta2 = document.getElementById('cta2');
+        const sub1 = document.getElementById('sub-buttons-1');
+        const sub2 = document.getElementById('sub-buttons-2');
 
-        mainCta.addEventListener('click', () => {
-            subButtons.style.display = subButtons.style.display === 'flex' ? 'none' : 'flex';
+        cta1.addEventListener('click', () => {
+            if (sub1.classList.contains('show')) {
+                sub1.classList.remove('show');
+            } else {
+                sub1.classList.add('show');
+                sub2.classList.remove('show');
+            }
+        });
+
+        cta2.addEventListener('click', () => {
+            if (sub2.classList.contains('show')) {
+                sub2.classList.remove('show');
+            } else {
+                sub2.classList.add('show');
+                sub1.classList.remove('show');
+            }
         });
     </script>
 </body>
